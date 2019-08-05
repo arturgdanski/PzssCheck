@@ -10,6 +10,10 @@ namespace PzssCheck
     {
         static void Main(string[] args)
         {
+            var appCore = new Core();
+            appCore.Run();
+
+            Console.ReadLine();
         }
     }
 }
