@@ -8,20 +8,12 @@ using System.Configuration;
 
 namespace PzssCheck
 {
-    /// <summary>
-    /// TODO:
-    /// 1. Remove whole ini-parser nuget package and references
-    /// 2. Save/Load Credentials using secure Save/Load methods from Credentials class
-    /// 3. If no credentials file in system (store in AppData?), then ask to create
-    /// 4. Create secure input for entering password in console
-    /// </summary>
     class CredentialsManager
     {
         private Credentials m_credentials;
 
         public CredentialsManager()
         {
-
         }
 
         public bool Load()

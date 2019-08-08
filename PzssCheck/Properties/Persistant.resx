@@ -117,46 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ErrorLoadCred" xml:space="preserve">
-    <value>Nie można załadować pliku danych dostępowych lub plik nie ma poprawnego formatu.</value>
+  <data name="PzssLicenseListPage" xml:space="preserve">
+    <value>https://portal.pzss.org.pl/Player/Licence/List</value>
   </data>
-  <data name="ErrorTranslation" xml:space="preserve">
-    <value>Błąd</value>
+  <data name="PzssLoginPage" xml:space="preserve">
+    <value>https://portal.pzss.org.pl</value>
   </data>
-  <data name="ErrorUnableToDecode" xml:space="preserve">
-    <value>Nie można odkodować danych dostępowych</value>
-  </data>
-  <data name="ErrorUnknownError" xml:space="preserve">
-    <value>Nieznany błąd</value>
-  </data>
-  <data name="ErrorWebSignInFailed" xml:space="preserve">
-    <value>Nie udało się zalogować do portalu PZSS</value>
-  </data>
-  <data name="ExceptionTranslation" xml:space="preserve">
-    <value>Wyjątek</value>
-  </data>
-  <data name="InfoLoadCredFile" xml:space="preserve">
-    <value>Nie można odnaleźć pliku danych dostępowych</value>
-  </data>
-  <data name="InfoNewCredentialsWelcomeString" xml:space="preserve">
-    <value>Czy chcesz teraz utworzyć plik danych dostępowych? [Y/n]</value>
-  </data>
-  <data name="InfoNoLicensesFound" xml:space="preserve">
-    <value>Nie znaleziono licencji</value>
-  </data>
-  <data name="InfoPleaseEnterLogin" xml:space="preserve">
-    <value>Wprowadź login:</value>
-  </data>
-  <data name="InfoPleaseEnterPassword" xml:space="preserve">
-    <value>Wprowadź hasło:</value>
-  </data>
-  <data name="InfoTranslation" xml:space="preserve">
-    <value>Info</value>
-  </data>
-  <data name="UserResponseNegative" xml:space="preserve">
-    <value>n</value>
-  </data>
-  <data name="WarningTranslation" xml:space="preserve">
-    <value>Uwaga</value>
+  <data name="PzssPortalCorrectSignInAbsUrl" xml:space="preserve">
+    <value>/Player/Player/Profile</value>
   </data>
 </root>

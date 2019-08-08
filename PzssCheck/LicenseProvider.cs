@@ -28,9 +28,9 @@ namespace PzssCheck
                             return true;
                         });
 
-            m_pzssLoginPage = Properties.Resources.PzssLoginPage;
-            m_pzssLicensesListPage = Properties.Resources.PzssLicenseListPage;
-            m_pzssCorrectSignIn = Properties.Resources.PzssPortalCorrectSignInAbsUrl;
+            m_pzssLoginPage = Properties.Persistant.PzssLoginPage;
+            m_pzssLicensesListPage = Properties.Persistant.PzssLicenseListPage;
+            m_pzssCorrectSignIn = Properties.Persistant.PzssPortalCorrectSignInAbsUrl;
         }
 
         public string GetAllLicenses(Credentials credentials)
@@ -48,7 +48,8 @@ namespace PzssCheck
                     }
                     else
                     {
-                        Console.WriteLine("Error: {0}", Properties.Resources.ErrorWebSignInFailed);
+                        Console.WriteLine("{0}: {1}", Properties.Resources.ErrorTranslation,
+                            Properties.Resources.ErrorWebSignInFailed);
                     }
             }
             return ret;
@@ -57,19 +58,20 @@ namespace PzssCheck
         private WebResponse ProcessSyncHttpLoginRequest(Credentials credentials, string url)
         {
             string postData = "";
-
             try
             {
                 postData = String.Format("Login={0}&Password={1}", credentials.Login, credentials.Password);
             }
             catch (CryptographicException)
             {
-                Console.WriteLine("Error: {0}", Properties.Resources.ErrorUnableToDecode);
+                Console.WriteLine("{0}: {1}", Properties.Resources.ErrorTranslation,
+                    Properties.Resources.ErrorUnableToDecode);
                 return null;
             }
             catch (Exception)
             {
-                Console.WriteLine("Error: {0}", Properties.Resources.ErrorUnknownError);
+                Console.WriteLine("{0}: {1}", Properties.Resources.ErrorTranslation,
+                    Properties.Resources.ErrorUnknownError);
                 return null;
             }
 

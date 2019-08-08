@@ -15,7 +15,6 @@ namespace PzssCheck
     {
         public LicenseParser()
         {
-
         }
 
         public License[] Parse(string htmlLicenses)
@@ -46,7 +45,7 @@ namespace PzssCheck
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception: {0}", ex.Message);
+                Console.WriteLine("{0}: {1}", Properties.Resources.ExceptionTranslation, ex.Message);
             }
 
             return licenses.ToArray();

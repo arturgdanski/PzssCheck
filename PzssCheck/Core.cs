@@ -46,7 +46,7 @@ namespace PzssCheck
             }
             else
             {
-                Console.WriteLine("Error: {0}", Properties.Resources.ErrorLoadCred);
+                Console.WriteLine("{0}: {1}", Properties.Resources.ErrorTranslation, Properties.Resources.ErrorLoadCred);
             }
         }
 

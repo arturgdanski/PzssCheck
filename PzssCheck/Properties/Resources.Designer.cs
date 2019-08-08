@@ -70,6 +70,15 @@ namespace PzssCheck.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Błąd.
+        /// </summary>
+        internal static string ErrorTranslation {
+            get {
+                return ResourceManager.GetString("ErrorTranslation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nie można odkodować danych dostępowych.
         /// </summary>
         internal static string ErrorUnableToDecode {
@@ -93,6 +102,15 @@ namespace PzssCheck.Properties {
         internal static string ErrorWebSignInFailed {
             get {
                 return ResourceManager.GetString("ErrorWebSignInFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wyjątek.
+        /// </summary>
+        internal static string ExceptionTranslation {
+            get {
+                return ResourceManager.GetString("ExceptionTranslation", resourceCulture);
             }
         }
         
@@ -142,29 +160,11 @@ namespace PzssCheck.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://portal.pzss.org.pl/Player/Licence/List.
+        ///   Looks up a localized string similar to Info.
         /// </summary>
-        internal static string PzssLicenseListPage {
+        internal static string InfoTranslation {
             get {
-                return ResourceManager.GetString("PzssLicenseListPage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to https://portal.pzss.org.pl.
-        /// </summary>
-        internal static string PzssLoginPage {
-            get {
-                return ResourceManager.GetString("PzssLoginPage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to /Player/Player/Profile.
-        /// </summary>
-        internal static string PzssPortalCorrectSignInAbsUrl {
-            get {
-                return ResourceManager.GetString("PzssPortalCorrectSignInAbsUrl", resourceCulture);
+                return ResourceManager.GetString("InfoTranslation", resourceCulture);
             }
         }
         
@@ -174,6 +174,15 @@ namespace PzssCheck.Properties {
         internal static string UserResponseNegative {
             get {
                 return ResourceManager.GetString("UserResponseNegative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uwaga.
+        /// </summary>
+        internal static string WarningTranslation {
+            get {
+                return ResourceManager.GetString("WarningTranslation", resourceCulture);
             }
         }
     }
