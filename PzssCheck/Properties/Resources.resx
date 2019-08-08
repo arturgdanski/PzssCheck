@@ -117,20 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CredentialsFile" xml:space="preserve">
-    <value>login.txt</value>
-  </data>
   <data name="ErrorLoadCred" xml:space="preserve">
     <value>Nie można załadować pliku danych dostępowych lub plik nie ma poprawnego formatu.</value>
   </data>
-  <data name="ErrorLoadCredFile" xml:space="preserve">
-    <value>Nie można odnaleźć pliku danych dostępowych</value>
+  <data name="ErrorUnableToDecode" xml:space="preserve">
+    <value>Nie można odkodować danych dostępowych</value>
+  </data>
+  <data name="ErrorUnknownError" xml:space="preserve">
+    <value>Nieznany błąd</value>
   </data>
   <data name="ErrorWebSignInFailed" xml:space="preserve">
     <value>Nie udało się zalogować do portalu PZSS</value>
   </data>
+  <data name="InfoLoadCredFile" xml:space="preserve">
+    <value>Nie można odnaleźć pliku danych dostępowych</value>
+  </data>
+  <data name="InfoNewCredentialsWelcomeString" xml:space="preserve">
+    <value>Czy chcesz teraz utworzyć plik danych dostępowych? [Y/n]</value>
+  </data>
   <data name="InfoNoLicensesFound" xml:space="preserve">
     <value>Nie znaleziono licencji</value>
+  </data>
+  <data name="InfoPleaseEnterLogin" xml:space="preserve">
+    <value>Wprowadź login:</value>
+  </data>
+  <data name="InfoPleaseEnterPassword" xml:space="preserve">
+    <value>Wprowadź hasło:</value>
   </data>
   <data name="PzssLicenseListPage" xml:space="preserve">
     <value>https://portal.pzss.org.pl/Player/Licence/List</value>
@@ -140,5 +152,8 @@
   </data>
   <data name="PzssPortalCorrectSignInAbsUrl" xml:space="preserve">
     <value>/Player/Player/Profile</value>
+  </data>
+  <data name="UserResponseNegative" xml:space="preserve">
+    <value>n</value>
   </data>
 </root>
