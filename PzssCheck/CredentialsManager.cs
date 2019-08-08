@@ -19,7 +19,7 @@ namespace PzssCheck
         public bool Load()
         {
             m_credentials = new Credentials();
-            if(m_credentials.LoadCredentials(" "))
+            if(m_credentials.LoadCredentials("credentials.bin"))
             {
                 return true;
             }
@@ -30,7 +30,7 @@ namespace PzssCheck
                 m_credentials = CreateNewCredentials();
                 if(m_credentials != null)
                 {
-                    m_credentials.SaveCredentials(" ");
+                    m_credentials.SaveCredentials("credentials.bin");
                     return true;
                 }
             }

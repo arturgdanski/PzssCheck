@@ -56,16 +56,24 @@ namespace PzssCheck
 
         public bool LoadCredentials(string filePath)
         {
-            if (File.Exists("u.bin"))
-                m_secureUsername = File.ReadAllBytes("u.bin");
-            else
-                return false;
+            using (var stream = new FileStream(filePath, FileMode.OpenOrCreate))
+            {
+                using (var reader = new BinaryReader(stream))
+                {
+                    try
+                    {
+                        var usernameSize = reader.ReadInt32();
+                        var passwordSize = reader.ReadInt32();
+                        m_secureUsername = reader.ReadBytes(usernameSize);
+                        m_securePassword = reader.ReadBytes(passwordSize);
+                    }
+                    catch (EndOfStreamException)
+                    {
+                        return false;
+                    }
+                }
+            }
 
-            if (File.Exists("p.bin"))
-                m_securePassword = File.ReadAllBytes("p.bin");
-            else
-                return false;
-            
             // load entropy too
 
             return true;
@@ -73,8 +81,16 @@ namespace PzssCheck
 
         public bool SaveCredentials(string filePath)
         {
-            File.WriteAllBytes("u.bin", m_secureUsername);
-            File.WriteAllBytes("p.bin", m_securePassword);
+            using (var stream = new FileStream(filePath, FileMode.OpenOrCreate))
+            {
+                using (var writer = new BinaryWriter(stream))
+                {
+                    writer.Write(m_secureUsername.Length);
+                    writer.Write(m_securePassword.Length);
+                    writer.Write(m_secureUsername);
+                    writer.Write(m_securePassword);
+                }
+            }
 
             // save entropy too
 
