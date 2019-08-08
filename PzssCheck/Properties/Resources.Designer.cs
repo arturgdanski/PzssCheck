@@ -61,15 +61,6 @@ namespace PzssCheck.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to login.txt.
-        /// </summary>
-        internal static string CredentialsFile {
-            get {
-                return ResourceManager.GetString("CredentialsFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Nie można załadować pliku danych dostępowych lub plik nie ma poprawnego formatu..
         /// </summary>
         internal static string ErrorLoadCred {
@@ -79,11 +70,29 @@ namespace PzssCheck.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nie można odnaleźć pliku danych dostępowych.
+        ///   Looks up a localized string similar to Błąd.
         /// </summary>
-        internal static string ErrorLoadCredFile {
+        internal static string ErrorTranslation {
             get {
-                return ResourceManager.GetString("ErrorLoadCredFile", resourceCulture);
+                return ResourceManager.GetString("ErrorTranslation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nie można odkodować danych dostępowych.
+        /// </summary>
+        internal static string ErrorUnableToDecode {
+            get {
+                return ResourceManager.GetString("ErrorUnableToDecode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nieznany błąd.
+        /// </summary>
+        internal static string ErrorUnknownError {
+            get {
+                return ResourceManager.GetString("ErrorUnknownError", resourceCulture);
             }
         }
         
@@ -97,6 +106,33 @@ namespace PzssCheck.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wyjątek.
+        /// </summary>
+        internal static string ExceptionTranslation {
+            get {
+                return ResourceManager.GetString("ExceptionTranslation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nie można odnaleźć pliku danych dostępowych.
+        /// </summary>
+        internal static string InfoLoadCredFile {
+            get {
+                return ResourceManager.GetString("InfoLoadCredFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Czy chcesz teraz utworzyć plik danych dostępowych? [Y/n].
+        /// </summary>
+        internal static string InfoNewCredentialsWelcomeString {
+            get {
+                return ResourceManager.GetString("InfoNewCredentialsWelcomeString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nie znaleziono licencji.
         /// </summary>
         internal static string InfoNoLicensesFound {
@@ -106,29 +142,47 @@ namespace PzssCheck.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://portal.pzss.org.pl/Player/Licence/List.
+        ///   Looks up a localized string similar to Wprowadź login:.
         /// </summary>
-        internal static string PzssLicenseListPage {
+        internal static string InfoPleaseEnterLogin {
             get {
-                return ResourceManager.GetString("PzssLicenseListPage", resourceCulture);
+                return ResourceManager.GetString("InfoPleaseEnterLogin", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://portal.pzss.org.pl.
+        ///   Looks up a localized string similar to Wprowadź hasło:.
         /// </summary>
-        internal static string PzssLoginPage {
+        internal static string InfoPleaseEnterPassword {
             get {
-                return ResourceManager.GetString("PzssLoginPage", resourceCulture);
+                return ResourceManager.GetString("InfoPleaseEnterPassword", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /Player/Player/Profile.
+        ///   Looks up a localized string similar to Info.
         /// </summary>
-        internal static string PzssPortalCorrectSignInAbsUrl {
+        internal static string InfoTranslation {
             get {
-                return ResourceManager.GetString("PzssPortalCorrectSignInAbsUrl", resourceCulture);
+                return ResourceManager.GetString("InfoTranslation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to n.
+        /// </summary>
+        internal static string UserResponseNegative {
+            get {
+                return ResourceManager.GetString("UserResponseNegative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uwaga.
+        /// </summary>
+        internal static string WarningTranslation {
+            get {
+                return ResourceManager.GetString("WarningTranslation", resourceCulture);
             }
         }
     }

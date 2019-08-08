@@ -5,6 +5,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,9 +28,9 @@ namespace PzssCheck
                             return true;
                         });
 
-            m_pzssLoginPage = Properties.Resources.PzssLoginPage;
-            m_pzssLicensesListPage = Properties.Resources.PzssLicenseListPage;
-            m_pzssCorrectSignIn = Properties.Resources.PzssPortalCorrectSignInAbsUrl;
+            m_pzssLoginPage = Properties.Persistant.PzssLoginPage;
+            m_pzssLicensesListPage = Properties.Persistant.PzssLicenseListPage;
+            m_pzssCorrectSignIn = Properties.Persistant.PzssPortalCorrectSignInAbsUrl;
         }
 
         public string GetAllLicenses(Credentials credentials)
@@ -37,24 +38,43 @@ namespace PzssCheck
             string ret = "";
             using (var loginResponse = ProcessSyncHttpLoginRequest(credentials, m_pzssLoginPage))
             {
-                if (loginResponse.ResponseUri.AbsolutePath == m_pzssCorrectSignIn)
-                {
-                    using(var licensesResponse = ProcessSyncHttpWebRequest(m_pzssLicensesListPage))
+                if(loginResponse != null)
+                    if (loginResponse.ResponseUri.AbsolutePath == m_pzssCorrectSignIn)
                     {
-                        ret = ReadWebResponse(licensesResponse);
+                        using(var licensesResponse = ProcessSyncHttpWebRequest(m_pzssLicensesListPage))
+                        {
+                            ret = ReadWebResponse(licensesResponse);
+                        }
                     }
-                }
-                else
-                {
-                    Console.WriteLine("Error: {0}", Properties.Resources.ErrorWebSignInFailed);
-                }
+                    else
+                    {
+                        Console.WriteLine("{0}: {1}", Properties.Resources.ErrorTranslation,
+                            Properties.Resources.ErrorWebSignInFailed);
+                    }
             }
             return ret;
         }
 
         private WebResponse ProcessSyncHttpLoginRequest(Credentials credentials, string url)
         {
-            string postData = String.Format("Login={0}&Password={1}", credentials.Login, credentials.Password);
+            string postData = "";
+            try
+            {
+                postData = String.Format("Login={0}&Password={1}", credentials.Login, credentials.Password);
+            }
+            catch (CryptographicException)
+            {
+                Console.WriteLine("{0}: {1}", Properties.Resources.ErrorTranslation,
+                    Properties.Resources.ErrorUnableToDecode);
+                return null;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("{0}: {1}", Properties.Resources.ErrorTranslation,
+                    Properties.Resources.ErrorUnknownError);
+                return null;
+            }
+
             byte[] byteData = Encoding.ASCII.GetBytes(postData);
 
             m_cookieContainer = new CookieContainer();

@@ -4,58 +4,66 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-
-using IniParser;
-using IniParser.Model;
 using System.Configuration;
 
 namespace PzssCheck
 {
     class CredentialsManager
     {
-        private string m_filePath;
         private Credentials m_credentials;
 
         public CredentialsManager()
         {
-            var fileName = Properties.Resources.CredentialsFile;
-            if(fileName != null)
-            {
-                m_filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
-            }
         }
 
         public bool Load()
         {
-            if (File.Exists(m_filePath))
+            m_credentials = new Credentials();
+            if(m_credentials.LoadCredentials("credentials.bin"))
             {
-                LoadCredentials();
                 return true;
             }
             else
             {
-                Console.WriteLine("Error: {0}", Properties.Resources.ErrorLoadCredFile);
-                return false;
+                Console.WriteLine(Properties.Resources.InfoLoadCredFile);
+
+                m_credentials = CreateNewCredentials();
+                if(m_credentials != null)
+                {
+                    m_credentials.SaveCredentials("credentials.bin");
+                    return true;
+                }
             }
+
+            return false;
         }
 
         public Credentials GetCredentials()
         {
             return m_credentials;
         }
-
-        private void LoadCredentials()
+        
+        private Credentials CreateNewCredentials()
         {
-            var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile(m_filePath);
-            
-            var username = data["Credentials"]["Login"];
-            var password = data["Credentials"]["Password"];
+            string username;
+            string password;
 
-            if(username != null && password != null)
+            Console.WriteLine(Properties.Resources.InfoNewCredentialsWelcomeString);
+            var ret = Console.ReadLine();
+            if(ret.ToLower() != Properties.Resources.UserResponseNegative)
             {
-                m_credentials = new Credentials(username, password);
+                Console.WriteLine(Properties.Resources.InfoPleaseEnterLogin);
+                username = Console.ReadLine();
+                Console.WriteLine(Properties.Resources.InfoPleaseEnterPassword);
+                password = Console.ReadLine();
+                Console.Clear();
             }
+            else
+            {
+                return null;
+            }
+
+            return new Credentials(username, password);
         }
         
     }
