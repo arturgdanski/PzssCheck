@@ -15,20 +15,17 @@ namespace PzssCheck
     {
         public Credentials()
         {
-            m_entropy = Encoding.UTF8.GetBytes("PzssCheck");
-
-            // TODO: generate this random byte and store in different place
-
-            //using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
-            //{
-            //    rng.GetBytes(m_entropy);
-            //}
-
+            m_entropy = new byte[1024];
         }
 
         public Credentials(string username, string password)
             :this()
         {
+            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+            {
+                rng.GetBytes(m_entropy);
+            }
+
             m_secureUsername = ProtectedData.Protect(Encoding.UTF8.GetBytes(username), m_entropy, DataProtectionScope.CurrentUser);
             m_securePassword = ProtectedData.Protect(Encoding.UTF8.GetBytes(password), m_entropy, DataProtectionScope.CurrentUser);
         }
@@ -54,9 +51,13 @@ namespace PzssCheck
         private byte[] m_securePassword;
         private byte[] m_entropy;
 
-        public bool LoadCredentials(string filePath)
+        public bool LoadCredentials(string fileName)
         {
-            using (var stream = new FileStream(filePath, FileMode.OpenOrCreate))
+            var directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "PzssCheck");
+            if (!Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
+
+            using (var stream = new FileStream(Path.Combine(directory, fileName), FileMode.OpenOrCreate))
             {
                 using (var reader = new BinaryReader(stream))
                 {
@@ -73,15 +74,31 @@ namespace PzssCheck
                     }
                 }
             }
+            
+            // Load entropy
+            var entropyPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "PzssCheck");
+            if (!Directory.Exists(entropyPath))
+                return false;
 
-            // load entropy too
+            using (var stream = new FileStream(Path.Combine(entropyPath, "entropy.bin"), FileMode.OpenOrCreate))
+            {
+                using (var reader = new BinaryReader(stream))
+                {
+                    var len = reader.ReadInt32();
+                    m_entropy = reader.ReadBytes(len);
+                }
+            }
 
             return true;
         }
 
-        public bool SaveCredentials(string filePath)
+        public bool SaveCredentials(string fileName)
         {
-            using (var stream = new FileStream(filePath, FileMode.OpenOrCreate))
+            var directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "PzssCheck");
+            if (!Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
+
+            using (var stream = new FileStream(Path.Combine(directory, fileName), FileMode.OpenOrCreate))
             {
                 using (var writer = new BinaryWriter(stream))
                 {
@@ -93,6 +110,18 @@ namespace PzssCheck
             }
 
             // save entropy too
+            var entropyPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "PzssCheck");
+            if (!Directory.Exists(entropyPath))
+                Directory.CreateDirectory(entropyPath);
+
+            using (var stream = new FileStream(Path.Combine(entropyPath, "entropy.bin"), FileMode.OpenOrCreate))
+            {
+                using (var writer = new BinaryWriter(stream))
+                {
+                    writer.Write(m_entropy.Length);
+                    writer.Write(m_entropy);
+                }
+            }
 
             return false;
         }
