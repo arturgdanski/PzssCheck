@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PzssCheck", "PzssCheck\PzssCheck.csproj", "{FA82550E-8FAB-4371-BCED-3CE036A704F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PzssLib", "PzssLib\PzssLib.csproj", "{1CEB5341-624A-4DF0-85F8-BD668A6070B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FA82550E-8FAB-4371-BCED-3CE036A704F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA82550E-8FAB-4371-BCED-3CE036A704F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA82550E-8FAB-4371-BCED-3CE036A704F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CEB5341-624A-4DF0-85F8-BD668A6070B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CEB5341-624A-4DF0-85F8-BD668A6070B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CEB5341-624A-4DF0-85F8-BD668A6070B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CEB5341-624A-4DF0-85F8-BD668A6070B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

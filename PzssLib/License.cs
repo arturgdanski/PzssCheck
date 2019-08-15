@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PzssCheck
+namespace PzssLib
 {
     /// <summary>
     /// TODO:
@@ -12,7 +12,7 @@ namespace PzssCheck
     /// 2. Parse License type ("PKS")
     /// </summary>
     [Serializable]
-    class License
+    public class License
     {
         public License()
         {

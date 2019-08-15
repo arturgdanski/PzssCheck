@@ -120,6 +120,9 @@
   <data name="ErrorLoadCred" xml:space="preserve">
     <value>Nie można załadować pliku danych dostępowych lub plik nie ma poprawnego formatu.</value>
   </data>
+  <data name="ErrorSaveCred" xml:space="preserve">
+    <value>Nie można zapisać pliku danych dostępowych</value>
+  </data>
   <data name="ErrorTranslation" xml:space="preserve">
     <value>Błąd</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="InfoTranslation" xml:space="preserve">
     <value>Info</value>
+  </data>
+  <data name="PzssCheckWelcomeString" xml:space="preserve">
+    <value>PzssCheck</value>
   </data>
   <data name="UserResponseNegative" xml:space="preserve">
     <value>n</value>

@@ -12,8 +12,6 @@ namespace PzssCheck
         {
             var appCore = new Core();
             appCore.Run();
-
-            Console.ReadLine();
         }
     }
 }
