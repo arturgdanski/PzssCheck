@@ -38,7 +38,10 @@ namespace PzssCheck
                     if (licenses.Count() > 0)
                         foreach (var license in licenses)
                         {
-                            Console.WriteLine(license.LicenseName + " " + license.LicenseNumber);
+                            Console.WriteLine(
+                                "{0},{1},{2},{3},{4}",
+                                license.LicenseName, license.LicenseNumber, license.LicenseType,
+                                license.LicenseBeginDate, license.LicenseEndDate);
                         }
                     else
                         Console.WriteLine("Info: {0}", Properties.Resources.InfoNoLicensesFound);

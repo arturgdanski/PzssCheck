@@ -32,16 +32,17 @@ namespace PzssCheck
                     .Select(tr => tr.Elements("td").Select(td => td.InnerText.Trim()).ToList())
                     .ToList();
 
-                if (licensesTable.Count > 0)
+                foreach (var entry in licensesTable)
                 {
-                    if (licensesTable[0].Count > 2)
+                    // Check if this is a complete license entry (ignore "acquire license" entries)
+                    if(entry.Count > 5)
                     {
-                        foreach (var entry in licensesTable)
-                        {
-                            licenses.Add(new License(entry[0], entry[2]));
-                        }
+                        licenses.Add(new License(
+                            entry[LicenseNameColId], entry[LicenseNoCoId],
+                            entry[LicenseTypeCoId], entry[LicenseBeginDateCoId], entry[LicenseEndDateCoId]));
                     }
                 }
+                
             }
             catch (Exception ex)
             {
@@ -50,6 +51,13 @@ namespace PzssCheck
 
             return licenses.ToArray();
         }
+
+        // Column descriptor
+        private const int LicenseNameColId = 0;
+        private const int LicenseNoCoId = 2;
+        private const int LicenseTypeCoId = 4;
+        private const int LicenseBeginDateCoId = 5;
+        private const int LicenseEndDateCoId = 6;
 
     }
 }
