@@ -1,12 +1,15 @@
+# PzssLib
+C# library used for retrieving PZSS member informations from "PZSS Portal" (Polish Sport Shooting Federation members portal).
+
 # PzssCheck
-Simple console application used for retrieving license information from "PZSS Portal" (Polish Sport Shooting Federation members portal). This tool can be used to quickly retrieve information about granted licenses.
+Simple console application which uses PzssLib to quickly check status of granted licenses.
 
 #### Compile
 
-This project uses .Net Framework 4.5 and following NuGet packages:
-1. HtmlAgilityPack
-2. ini-parser
+Currently this project uses .NET Framework 4.5 and following NuGet packages:
+1. HtmlAgilityPack - for parsing HTML responses
 
-#### Usage
+#### Future
 
-Enter PZSS Portal credentials (e-mail and password) into login.txt file and start PzssCheck.exe
+Library helps retrieving licenses information. Future plans for this cover retrieving all member data, so it could be used for signing in for matches without manually providing all necessary informations by hand.
+
