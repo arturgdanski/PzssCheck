@@ -70,6 +70,15 @@ namespace PzssCheck.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nie można zapisać pliku danych dostępowych.
+        /// </summary>
+        internal static string ErrorSaveCred {
+            get {
+                return ResourceManager.GetString("ErrorSaveCred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Błąd.
         /// </summary>
         internal static string ErrorTranslation {
@@ -165,6 +174,15 @@ namespace PzssCheck.Properties {
         internal static string InfoTranslation {
             get {
                 return ResourceManager.GetString("InfoTranslation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PzssCheck.
+        /// </summary>
+        internal static string PzssCheckWelcomeString {
+            get {
+                return ResourceManager.GetString("PzssCheckWelcomeString", resourceCulture);
             }
         }
         

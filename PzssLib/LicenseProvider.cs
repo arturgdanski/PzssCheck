@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace PzssCheck
+using PzssLib.Exceptions;
+
+namespace PzssLib
 {
-    class LicenseProvider
+    public class LicenseProvider
     {
         private string m_pzssLoginPage;
         private string m_pzssLicensesListPage;
@@ -28,9 +26,9 @@ namespace PzssCheck
                             return true;
                         });
 
-            m_pzssLoginPage = Properties.Persistant.PzssLoginPage;
-            m_pzssLicensesListPage = Properties.Persistant.PzssLicenseListPage;
-            m_pzssCorrectSignIn = Properties.Persistant.PzssPortalCorrectSignInAbsUrl;
+            m_pzssLoginPage = Persistent.PzssLoginPage;
+            m_pzssLicensesListPage = Persistent.PzssLicenseListPage;
+            m_pzssCorrectSignIn = Persistent.PzssPortalCorrectSignInAbsUrl;
         }
 
         public string GetAllLicenses(Credentials credentials)
@@ -48,8 +46,7 @@ namespace PzssCheck
                     }
                     else
                     {
-                        Console.WriteLine("{0}: {1}", Properties.Resources.ErrorTranslation,
-                            Properties.Resources.ErrorWebSignInFailed);
+                        throw new LicenseProviderException("Unable to sign in");
                     }
             }
             return ret;
@@ -62,17 +59,13 @@ namespace PzssCheck
             {
                 postData = String.Format("Login={0}&Password={1}", credentials.Login, credentials.Password);
             }
-            catch (CryptographicException)
+            catch (CryptographicException ex)
             {
-                Console.WriteLine("{0}: {1}", Properties.Resources.ErrorTranslation,
-                    Properties.Resources.ErrorUnableToDecode);
-                return null;
+                throw new LicenseProviderException("Cryptographic exception", ex);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Console.WriteLine("{0}: {1}", Properties.Resources.ErrorTranslation,
-                    Properties.Resources.ErrorUnknownError);
-                return null;
+                throw new LicenseProviderException("Unrecognized exception", ex);
             }
 
             byte[] byteData = Encoding.ASCII.GetBytes(postData);
@@ -101,7 +94,6 @@ namespace PzssCheck
             request.CookieContainer = m_cookieContainer;
 
             WebResponse response = request.GetResponse();
-            response = request.GetResponse();
             
             return response;
         }
